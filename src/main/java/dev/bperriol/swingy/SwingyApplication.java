@@ -1,13 +1,30 @@
 package dev.bperriol.swingy;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.awt.EventQueue;
 
-@SpringBootApplication
+import javax.swing.JFrame;
+
+import dev.bperriol.swingy.view.Window;
+
 public class SwingyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwingyApplication.class, args);
+
+		// try {
+		
+			EventQueue.invokeLater(() -> {
+				Window window = Window.getInstance();
+				window.createWindow();
+				window.setVisible(true);
+				System.out.println("yess = " + JFrame.getWindows().length);
+				window.dispose();
+				System.out.println("no = " + JFrame.getWindows().length);
+			});
+
+		// }
+		// catch (CustomException e) {
+		// 	System.err.println(e.getMessage());
+		// }
 	}
 
 }
